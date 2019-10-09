@@ -7,13 +7,12 @@ interface Props {
 }
 
 const ListCard: FunctionComponent<any> = (props: Props) => {
-
 	const { post } = props;
 	return (
 		<div style={styles.wrapper}>
-			<p>{post.title}</p>
-			<p>{post.content}</p>
-			<img src={post.image_url}/>
+			<p style={styles.text}>{post.title}</p>
+			<p style={styles.text}>{post.content}</p>
+			<img style={styles.image} src={post.image_url}/>
 		</div>
 	);
 };
@@ -21,10 +20,16 @@ const ListCard: FunctionComponent<any> = (props: Props) => {
 export default ListCard;
 
 const styles = {
+	image: {
+		width: '100%',
+	},
+	text: {
+		fontSize: '12pt',
+	},
 	wrapper: {
 		border: '1px solid black',
 		margin: '5%',
 		padding: '10%',
 		width: '100%',
-	}
-}
+	},
+};

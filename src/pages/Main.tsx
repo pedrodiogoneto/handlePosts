@@ -12,8 +12,10 @@ const Main: React.FC = (props: any) => {
 
 	return (
 		<div>
-			<List />
 			<h1>lkjashdfklashdf</h1>
+			<div style={{ width: '30%' }}>
+			<List />
+			</div>
 		</div>
 	);
 };
@@ -27,4 +29,4 @@ const mapStateToProps = (state: StoreState) => ({
 	posts: state.posts,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Main)
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
