@@ -1,4 +1,4 @@
-import { Post } from '../../constants/types'
+import { Post, PostData } from '../../constants/types';
 
 export const LOADING = () => {
 	return {
@@ -44,5 +44,25 @@ export const LIST_POSTS_SUCCESS = (posts: Post[]) => {
 		},
 		posts,
 		type: 'LIST_POSTS',
+	};
+};
+
+export const ADD_POST = (data: PostData) => {
+	return {
+		payload: {
+			data,
+			loading: true,
+		},
+		type: 'ADD_POST',
+	};
+};
+
+export const ADD_POST_SUCCESS = (posts: Post[]) => {
+	return {
+		payload: {
+			loading: false,
+		},
+		posts,
+		type: 'ADD_POST_SUCCESS',
 	};
 };

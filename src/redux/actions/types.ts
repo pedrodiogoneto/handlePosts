@@ -39,5 +39,20 @@ export interface ListPostsSuccess {
 	posts: Post[];
 }
 
+export interface AddPost {
+	type: constants.ADD_POST;
+	payload: {
+		loading: boolean;
+	};
+}
+
+export interface AddPostSuccess {
+	type: constants.ADD_POST_SUCCESS;
+	payload: {
+		loading: boolean;
+	};
+	posts: Post[];
+}
+
 export type LoadingType = Loading | LoadingError | LoadingSuccess;
-export type Posts = ListPosts | ListPostsSuccess;
+export type Posts = ListPosts | ListPostsSuccess | AddPost | AddPostSuccess;

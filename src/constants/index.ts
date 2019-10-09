@@ -8,3 +8,7 @@ export const LIST_POSTS = 'LIST_POSTS';
 export type LIST_POSTS = typeof LIST_POSTS;
 export const LIST_POSTS_SUCCESS = 'LIST_POSTS_SUCCESS';
 export type LIST_POSTS_SUCCESS = typeof LIST_POSTS_SUCCESS;
+export const ADD_POST = 'ADD_POST';
+export type ADD_POST = typeof ADD_POST;
+export const ADD_POST_SUCCESS = 'ADD_POST_SUCCESS';
+export type ADD_POST_SUCCESS = typeof ADD_POST_SUCCESS;
