@@ -1,10 +1,12 @@
 import { LOADING, LOADING_ERROR, LOADING_SUCCESS } from '../../constants/index';
-import { LoadingType } from '../actions/types';
+import { LoadingType, Posts } from '../actions/types';
 import { StoreState } from '../store/types';
 
-const initialState = { Loading: false };
+const initialState = { Loading: false, posts: [] };
 
-export default function reduxSagaReducer(state: StoreState = initialState, action: LoadingType) {
+type actionType = LoadingType | Posts;
+
+export default function reduxSagaReducer(state: StoreState = initialState, action: actionType) {
 	switch (action.type) {
 	case 'LOADING': {
 		return {
@@ -23,6 +25,20 @@ export default function reduxSagaReducer(state: StoreState = initialState, actio
 			...state,
 			Loading: false,
 			error: action.payload.error,
+		};
+	}
+	case 'LIST_POSTS': {
+		return {
+			...state,
+			Loading: false,
+		};
+	}
+	case 'LIST_POSTS_SUCCESS': {
+		console.log(action);
+		return {
+			...state,
+			Loading: false,
+			posts: action.posts,
 		};
 	}
 	default: {
