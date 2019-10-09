@@ -13,4 +13,10 @@ export default class Api {
 
 		return axios.post(uri, data);
 	}
+
+	static deletePost(id: number): Promise<Response> | undefined {
+		const uri = `${API_BASE_ADDRESS}/${id}`;
+
+		return axios.delete(uri);
+	}
 }

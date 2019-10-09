@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { Modal } from 'react-bootstrap';
+import React, { useEffect, useState, FunctionComponent } from 'react';
 import { connect } from 'react-redux';
 import List from '../components/List';
 import Navbar from '../components/Navbar';
@@ -7,7 +6,7 @@ import NewPostModal from '../components/NewPostModal';
 import { LIST_POSTS } from '../redux/actions/actions';
 import { StoreState } from '../redux/store/types';
 
-const Main: React.FC = (props: any) => {
+const Main: FunctionComponent<any> = (props: any) => {
 	const [showModal, setShowModal] = useState(false);
 
 	console.log(props);
