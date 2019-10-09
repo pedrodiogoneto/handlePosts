@@ -1,19 +1,32 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { FunctionComponent } from 'react';
+import { connect, useSelector } from 'react-redux';
 import { Post } from '../constants/types';
+import { DELETE_POST } from '../redux/actions/actions';
+import { StoreState } from '../redux/store/types';
 import ListCard from './ListCard';
 
-const List: React.FC = () => {
+const List: FunctionComponent<any> = (props: any) => {
 
 	const data = useSelector((state: any) => state);
 
-	const renderPosts = () => data.posts.map((post: Post, i: number) =>  <ListCard key={i} post={post} />);
+	const renderPosts = () => data.posts.map((post: Post, i: number) =>  {
+		return <ListCard key={i} post={post} handleOnDelete={(id: number) => props.DELETE_POST(id)}/>;
+	});
 
-	return ( 
+	return (
 		<div>
-			<h1>{data ? renderPosts() : ''}</h1>
+			{data ? renderPosts() : ''}
 		</div>
 	);
 };
 
-export default List;
+const mapDispatchToProps = {
+	DELETE_POST,
+};
+
+const mapStateToProps = (state: StoreState) => ({
+	Loading: state.Loading,
+	posts: state.posts,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(List);
