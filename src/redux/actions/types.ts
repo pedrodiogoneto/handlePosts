@@ -1,5 +1,5 @@
 import * as constants from '../../constants';
-import { Post } from '../../constants/types'
+import { Post } from '../../constants/types';
 
 // Action interfaces
 export interface Loading {
@@ -54,5 +54,20 @@ export interface AddPostSuccess {
 	posts: Post[];
 }
 
+export interface DeletePost {
+	type: constants.DELETE_POST;
+	payload: {
+		loading: boolean;
+	};
+}
+
+export interface DeletePostSuccess {
+	type: constants.DELETE_POST_SUCCESS;
+	payload: {
+		loading: boolean;
+	};
+	posts: Post[];
+}
+
 export type LoadingType = Loading | LoadingError | LoadingSuccess;
-export type Posts = ListPosts | ListPostsSuccess | AddPost | AddPostSuccess;
+export type Posts = ListPosts | ListPostsSuccess | AddPost | AddPostSuccess | DeletePost | DeletePostSuccess;

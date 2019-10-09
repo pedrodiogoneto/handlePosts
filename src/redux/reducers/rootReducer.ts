@@ -47,7 +47,19 @@ export default function reduxSagaReducer(state: StoreState = initialState, actio
 		};
 	}
 	case 'ADD_POST_SUCCESS': {
-		console.log('********', state, action);
+		return {
+			...state,
+			Loading: false,
+			posts: action.posts,
+		};
+	}
+	case 'DELETE_POST': {
+		return {
+			...state,
+			Loading: false,
+		};
+	}
+	case 'DELETE_POST_SUCCESS': {
 		return {
 			...state,
 			Loading: false,
