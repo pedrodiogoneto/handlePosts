@@ -1,3 +1,5 @@
+import { Post } from '../../constants/types'
+
 export const LOADING = () => {
 	return {
 		payload: {
@@ -35,7 +37,7 @@ export const LIST_POSTS = () => {
 	};
 };
 
-export const LIST_POSTS_SUCCESS = (posts: any) => {
+export const LIST_POSTS_SUCCESS = (posts: Post[]) => {
 	return {
 		payload: {
 			loading: false,

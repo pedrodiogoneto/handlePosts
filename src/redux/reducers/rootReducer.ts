@@ -34,7 +34,6 @@ export default function reduxSagaReducer(state: StoreState = initialState, actio
 		};
 	}
 	case 'LIST_POSTS_SUCCESS': {
-		console.log(action);
 		return {
 			...state,
 			Loading: false,
