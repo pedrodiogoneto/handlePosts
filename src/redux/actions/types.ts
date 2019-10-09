@@ -1,4 +1,4 @@
-import * as constants from "../../constants";
+import * as constants from '../../constants';
 
 // Action interfaces
 export interface Loading {
@@ -23,4 +23,20 @@ export interface LoadingSuccess {
 	};
 }
 
+export interface ListPosts {
+	type: constants.LIST_POSTS;
+	payload: {
+		loading: boolean;
+	};
+}
+
+export interface ListPostsSuccess {
+	type: constants.LIST_POSTS_SUCCESS;
+	payload: {
+		loading: boolean;
+	};
+	posts: any;
+}
+
 export type LoadingType = Loading | LoadingError | LoadingSuccess;
+export type Posts = ListPosts | ListPostsSuccess;
