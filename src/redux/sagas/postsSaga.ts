@@ -3,7 +3,8 @@ import Api from '../../services/apiService';
 
 async function fetchAsync(func: any, data: any) {
 	const response = await func(data);
-	if (response.status === 200) return await response.json();
+	console.log('?????', response);
+	if (response.status === 200) return response.data;
 	throw new Error('Unexpected error!!!');
 }
 
@@ -18,8 +19,27 @@ function* fetchPosts() {
 	}
 }
 
-export function* postsSaga() {
+
+export function* postsSaga(data?: any) {
 	yield takeLatest('LIST_POSTS', fetchPosts);
+	yield takeLatest('ADD_POST', addPost);
 }
 
 export default postsSaga;
+
+async function postAsync(func: any, data: any) {
+	const response = await func(data);
+	if (response.status === 201) return fetchAsync(Api.listPosts, '');
+	throw new Error('Unexpected error!!!');
+}
+
+function* addPost(data: any) {
+	try {
+		yield put({type: 'LOADING' });
+		const posts = yield postAsync(Api.addPost, data.payload.data);
+		yield put({type: 'ADD_POST_SUCCESS', posts});
+	} catch (e) {
+		console.log('erro', e);
+		yield put({type: 'LOADING_ERROR', error: e});
+	}
+}
