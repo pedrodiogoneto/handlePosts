@@ -2,11 +2,11 @@ import React from 'react';
 import './App.scss';
 
 const App: React.FC = () => {
-  return (
-    <div className="App">
-      
-    </div>
-  );
+	return (
+		<div className="App">
+			<h1>lkjashdfklashdf</h1>
+		</div>
+	);
 }
 
 export default App;
