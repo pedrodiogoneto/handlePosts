@@ -8,3 +8,11 @@ export interface Post {
 	title: string;
 	updated_at: string;
 }
+
+export interface PostData {
+	content: string;
+	image_url: string;
+	lat: string;
+	long: string;
+	title: string;
+}
