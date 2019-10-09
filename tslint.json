@@ -4,6 +4,10 @@
         "tslint:recommended"
     ],
     "jsRules": {},
-    "rules": {},
+    "rules": {
+        "indent": [true, "tabs", 4],
+        "interface-name": [true, "never-prefix"],
+        "quotemark": [true, "single", "jsx-double"]
+    },
     "rulesDirectory": []
 }
