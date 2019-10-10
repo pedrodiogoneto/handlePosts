@@ -1,11 +1,11 @@
-import React, { useEffect, useState, FunctionComponent } from 'react';
+import React, { FunctionComponent, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import List from '../components/List';
 import Navbar from '../components/Navbar';
 import NewPostModal from '../components/NewPostModal';
 import { LIST_POSTS } from '../redux/actions/actions';
 import { StoreState } from '../redux/store/types';
-
+import Map from '../Map'
 const Main: FunctionComponent<any> = (props: any) => {
 	const [showModal, setShowModal] = useState(false);
 
@@ -23,6 +23,9 @@ const Main: FunctionComponent<any> = (props: any) => {
 			<Navbar handleOnClickAdd={handleShowModal}/>
 			<div style={{ width: '30%' }}>
 				<List />
+			</div>
+			<div id="map">
+				<Map />
 			</div>
 		</div>
 	);
