@@ -19,4 +19,10 @@ export default class Api {
 
 		return axios.delete(uri);
 	}
+
+	static updatePost(id: any): Promise<Response> | undefined {
+		const uri = `${API_BASE_ADDRESS}/${id}`;
+
+		return axios.delete(uri);
+	}
 }

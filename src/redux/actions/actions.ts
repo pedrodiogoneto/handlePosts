@@ -86,3 +86,23 @@ export const DELETE_POST_SUCCESS = (posts: Post[]) => {
 		type: 'DELETE_POST_SUCCESS',
 	};
 };
+
+export const UPDATE_POST = (id: string) => {
+	return {
+		payload: {
+			id,
+			loading: true,
+		},
+		type: 'UPDATE_POST',
+	};
+};
+
+export const UPDATE_POST_SUCCESS = (posts: Post[]) => {
+	return {
+		payload: {
+			loading: false,
+		},
+		posts,
+		type: 'UPDATE_POST_SUCCESS',
+	};
+};

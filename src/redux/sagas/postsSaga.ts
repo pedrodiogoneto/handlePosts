@@ -3,8 +3,25 @@ import Api from '../../services/apiService';
 
 async function fetchAsync(func: any, data: any) {
 	const response = await func(data);
-	console.log('?????', response);
 	if (response.status === 200) return response.data;
+	throw new Error('Unexpected error!!!');
+}
+
+async function postAsync(func: any, data: any) {
+	const response = await func(data);
+	if (response.status === 201) return fetchAsync(Api.listPosts, '');
+	throw new Error('Unexpected error!!!');
+}
+
+async function deleteAsync(func: any, id: number) {
+	const response = await func(id);
+	if (response.status === 204) return fetchAsync(Api.listPosts, '');
+	throw new Error('Unexpected error!!!');
+}
+
+async function updateAsync(func: any, data: any) {
+	const response = await func(data);
+	if (response.status === 200) return fetchAsync(Api.listPosts, '');
 	throw new Error('Unexpected error!!!');
 }
 
@@ -19,21 +36,6 @@ function* fetchPosts() {
 	}
 }
 
-
-export function* postsSaga(data?: any) {
-	yield takeLatest('LIST_POSTS', fetchPosts);
-	yield takeLatest('ADD_POST', addPost);
-	yield takeLatest('DELETE_POST', deletePost);
-}
-
-export default postsSaga;
-
-async function postAsync(func: any, data: any) {
-	const response = await func(data);
-	if (response.status === 201) return fetchAsync(Api.listPosts, '');
-	throw new Error('Unexpected error!!!');
-}
-
 function* addPost(data: any) {
 	try {
 		yield put({type: 'LOADING' });
@@ -43,12 +45,6 @@ function* addPost(data: any) {
 		console.log('erro', e);
 		yield put({type: 'LOADING_ERROR', error: e});
 	}
-}
-
-async function deleteAsync(func: any, id: number) {
-	const response = await func(id);
-	if (response.status === 204) return fetchAsync(Api.listPosts, '');
-	throw new Error('Unexpected error!!!');
 }
 
 function* deletePost(data: any) {
@@ -61,3 +57,23 @@ function* deletePost(data: any) {
 		yield put({type: 'LOADING_ERROR', error: e});
 	}
 }
+
+function* updatePost(data: any) {
+	try {
+		yield put({type: 'LOADING' });
+		const posts = yield updateAsync(Api.updatePost, data.payload.data);
+		yield put({type: 'UPDATE_POST_SUCCESS', posts});
+	} catch (e) {
+		console.log('erro', e);
+		yield put({type: 'LOADING_ERROR', error: e});
+	}
+}
+
+export function* postsSaga(data?: any) {
+	yield takeLatest('LIST_POSTS', fetchPosts);
+	yield takeLatest('ADD_POST', addPost);
+	yield takeLatest('DELETE_POST', deletePost);
+	yield takeLatest('UPDATE_POST', updatePost);
+}
+
+export default postsSaga;

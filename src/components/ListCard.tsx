@@ -5,16 +5,18 @@ interface Props {
 	post: Post;
 	key: number;
 	handleOnDelete: (id: number) => void;
+	handleOnUpdate: (id: number) => void;
 }
 
 const ListCard: FunctionComponent<any> = (props: Props) => {
-	const { post, handleOnDelete } = props;
+	const { post, handleOnDelete, handleOnUpdate } = props;
 	return (
 		<div style={styles.wrapper}>
 			<p style={styles.text}>{post.title}</p>
 			<p style={styles.text}>{post.content}</p>
 			<img style={styles.image} src={post.image_url}/>
 			<button onClick={() => handleOnDelete(post.id)}>delete</button>
+			<button onClick={() => handleOnUpdate(post.id)}>update</button>
 		</div>
 	);
 };

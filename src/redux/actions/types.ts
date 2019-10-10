@@ -69,5 +69,21 @@ export interface DeletePostSuccess {
 	posts: Post[];
 }
 
+export interface UpdatePost {
+	type: constants.UPDATE_POST;
+	payload: {
+		loading: boolean;
+	};
+}
+
+export interface UpdatePostSuccess {
+	type: constants.UPDATE_POST_SUCCESS;
+	payload: {
+		loading: boolean;
+	};
+	posts: Post[];
+}
+
 export type LoadingType = Loading | LoadingError | LoadingSuccess;
-export type Posts = ListPosts | ListPostsSuccess | AddPost | AddPostSuccess | DeletePost | DeletePostSuccess;
+export type Posts = ListPosts | ListPostsSuccess | AddPost |
+	AddPostSuccess | DeletePost | DeletePostSuccess | UpdatePost | UpdatePostSuccess;
