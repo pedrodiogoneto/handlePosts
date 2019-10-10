@@ -26,7 +26,7 @@ const Main: FunctionComponent<any> = (props: any) => {
 				<div style={{ width: '30%', borderRight: '2px solid black', overflow: 'scroll', height: '94vh' }}>
 					<List />
 				</div>
-				<div id="map" style={{ overflow: 'hidden', position: 'absolute', left: '30%', maxHeight: '94vh' }}>
+				<div id="map" style={{ overflow: 'hidden', position: 'absolute', left: '30%', width: '70%', maxHeight: '94vh' }}>
 					<Map />
 				</div>
 			</div>
