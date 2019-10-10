@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import List from '../components/List';
-import Map from '../components/Map'
+import Map from '../components/Map';
 import Navbar from '../components/Navbar';
 import NewPostModal from '../components/NewPostModal';
 import { LIST_POSTS } from '../redux/actions/actions';
@@ -19,16 +19,18 @@ const Main: FunctionComponent<any> = (props: any) => {
 	const handleShowModal = (parameter: boolean) => setShowModal(parameter);
 
 	return (
-		<div>
+		<React.Fragment>
 			{showModal && <NewPostModal handleShowModal={handleShowModal} showModal={showModal}/>}
 			<Navbar handleOnClickAdd={handleShowModal}/>
-			<div style={{ width: '30%' }}>
-				<List />
+			<div style={{ display: 'flex' }}>
+				<div style={{ width: '30%', borderRight: '2px solid black', overflow: 'scroll', height: '94vh' }}>
+					<List />
+				</div>
+				<div id="map" style={{ overflow: 'hidden', position: 'absolute', left: '30%', maxHeight: '94vh' }}>
+					<Map />
+				</div>
 			</div>
-			<div id="map">
-				<Map />
-			</div>
-		</div>
+		</React.Fragment>
 	);
 };
 

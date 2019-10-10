@@ -12,11 +12,13 @@ const ListCard: FunctionComponent<any> = (props: Props) => {
 	const { post, handleOnDelete, handleOnUpdate } = props;
 	return (
 		<div style={styles.wrapper}>
-			<p style={styles.text}>{post.title}</p>
-			<p style={styles.text}>{post.content}</p>
 			<img style={styles.image} src={post.image_url}/>
-			<button onClick={() => handleOnDelete(post.id)}>delete</button>
-			<button onClick={() => handleOnUpdate(post.id)}>update</button>
+			<p style={styles.text}>{post.title}</p>
+			{/* <p style={styles.text}>{post.content}</p> */}
+			<div>
+				<button style={{ width: '50%', border: '1px solid black' }} onClick={() => handleOnDelete(post.id)}>delete</button>
+				<button style={{ width: '50%', border: '1px solid black' }} onClick={() => handleOnUpdate(post.id)}>update</button>
+			</div>
 		</div>
 	);
 };
@@ -32,8 +34,9 @@ const styles = {
 	},
 	wrapper: {
 		border: '1px solid black',
-		margin: '5%',
-		padding: '10%',
-		width: '100%',
+		margin: '2%',
+		//padding: '5%',
+		boxShadow: '0px 10px 7px -9px rgba(0,0,0,0.75)',
+
 	},
 };

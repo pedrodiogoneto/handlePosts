@@ -9,34 +9,49 @@ interface Props {
 
 interface State {
 	viewport: Viewport;
+	posts: [];
 }
 
 interface Viewport {
-	width: number;
-	height: number;
+	width: number | void;
+	height: number | void;
 	latitude: number;
 	longitude: number;
 	zoom: number;
 }
 
+const initialWidthViewport = () => window.innerWidth * 0.7;
+const initialHeightViewport = () => window.innerHeight * 0.94;
+
 class Map extends Component<Props, State> {
 	public state = {
 		viewport: {
-			width: 400,
-			height: 400,
-			latitude: 37.7577,
-			longitude: -122.4376,
-			zoom: 8,
+			width: initialWidthViewport(),
+			height: initialHeightViewport(),
+			latitude: 40.41678,
+			longitude: -3.70379,
+			zoom: 4,
 		},
+		posts: this.props.posts,
 	};
 
+	componentDidUpdate(prevProps: Props, prevState: State) {
+		if(prevProps.posts !== this.props.posts) {
+			this.setState({
+				posts: this.props.posts
+			})
+		}
+	}
+
 	public renderMarkers = () => {
-		if (!this.props.posts) return <Marker latitude={0} longitude={0}/>;
-		return this.props.posts.map(post => {
-			const { lat, long, title } = post;
+		if (!this.state.posts) return <Marker latitude={0} longitude={0}/>;
+		return this.state.posts.map((post) => {
+			const { lat, long, title, id } = post;
 			return (
 				<Marker latitude={Number(lat)} longitude={Number(long)} offsetLeft={-20} offsetTop={-10}>
-					<div>kljahsdflkjahs</div>
+					<a>
+						<i className="fa fa-map-marker fa-2x" aria-hidden="true"></i>
+					</a>
 				</Marker>
 			);
 		});
