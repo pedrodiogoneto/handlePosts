@@ -38,3 +38,18 @@
     border: 1px solid black;
   } 
 }
+
+.navbar {
+
+  &__wrapper {
+    border-bottom: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2%;
+  }
+  &__button {
+    border: 0px;
+    background-color: white;
+  }
+}
+
