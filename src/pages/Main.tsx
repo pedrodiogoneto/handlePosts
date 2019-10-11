@@ -10,11 +10,7 @@ import { StoreState } from '../redux/store/types';
 const Main: FunctionComponent<any> = (props: any) => {
 	const [showModal, setShowModal] = useState(false);
 
-	console.log(props);
-
-	useEffect(() => {
-		props.LIST_POSTS();
-	}, []);
+	useEffect(() => { props.LIST_POSTS(); }, []);
 
 	const handleShowModal = (parameter: boolean) => setShowModal(parameter);
 
@@ -22,11 +18,11 @@ const Main: FunctionComponent<any> = (props: any) => {
 		<React.Fragment>
 			{showModal && <NewPostModal handleShowModal={handleShowModal} showModal={showModal}/>}
 			<Navbar handleOnClickAdd={handleShowModal}/>
-			<div style={{ display: 'flex' }}>
-				<div style={{ width: '30%', borderRight: '2px solid black', overflow: 'scroll', height: '94vh' }}>
+			<div className="main__bodyWrapper">
+				<div className="main__list">
 					<List />
 				</div>
-				<div id="map" style={{ overflow: 'hidden', position: 'absolute', left: '30%', width: '70%', maxHeight: '94vh' }}>
+				<div id="map" className="main__map">
 					<Map />
 				</div>
 			</div>

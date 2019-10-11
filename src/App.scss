@@ -1,3 +1,25 @@
+.main {
+  
+  &__bodyWrapper {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  &__list {
+    width: 30%;
+    min-width: 400px;
+    border-right: 2px solid black;
+    overflow: scroll;
+    height: 94vh
+  }
+  &__map {
+    overflow: hidden;
+    position: absolute;
+    left: 30%; 
+    width: 70%;
+    max-height: 94vh;
+  }
+}
+
 .listCard {
 
   &__wrapper {
