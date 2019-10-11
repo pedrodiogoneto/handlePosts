@@ -1,21 +1,18 @@
-.App {
-  text-align: center;
-}
+.listCard {
 
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #09d3ac;
+  &__wrapper {
+    border: 1px solid black;
+    margin: 2%;
+    box-shadow: 0px 10px 7px -9px rgba(0,0,0,0.75);
+  }
+  &__image {
+      width: 100%;
+  }
+  &__text {
+      font-size: 12pt
+  }
+  &__button {
+    width: 50%;
+    border: 1px solid black;
+  } 
 }

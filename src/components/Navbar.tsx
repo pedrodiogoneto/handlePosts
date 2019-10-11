@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 
 interface NavbarProps {
-    handleOnClickAdd: (arg: boolean) => void;
+	handleOnClickAdd: (arg: boolean) => void;
 }
 
 const Navbar: FunctionComponent<any> = (props: NavbarProps) => {
