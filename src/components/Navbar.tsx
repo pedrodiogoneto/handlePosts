@@ -8,7 +8,7 @@ const Navbar: FunctionComponent<any> = (props: NavbarProps) => {
 	return (
 		<div style={styles.wrapper}>
 			<h3>POSTS</h3>
-			<button onClick={() => props.handleOnClickAdd(true)}>Add</button>
+			<button style={styles.button} onClick={() => props.handleOnClickAdd(true)}>Add</button>
 		</div>
 	);
 };
@@ -22,4 +22,8 @@ const styles = {
 		justifyContent: 'space-between',
 		padding: '0 2%',
 	},
+	button: {
+		border: '0px',
+		backgroundColor: 'white',
+	}
 };
