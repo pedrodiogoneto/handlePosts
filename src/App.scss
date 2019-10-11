@@ -53,3 +53,15 @@
   }
 }
 
+.modal {
+
+  &__input {
+    width: 100%;
+    border: 0px;
+    border-bottom: 1px solid grey;
+    margin-bottom: 2%
+  }
+  &__label {
+    margin: 1% 0px;
+  }
+}
